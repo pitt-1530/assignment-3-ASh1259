@@ -19,11 +19,11 @@ public class PlaylistRecommenderTest {
 
     @Test 
     public boolean testValidTrackTitle() {
-        assertTrue(true)
+        assertTrue(true);
     }
 
     @Test 
     public int testNormalizeVolume() {
-        assertEquals(True)
+        assertEquals(True);
     }
 }
