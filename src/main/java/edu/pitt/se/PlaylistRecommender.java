@@ -19,7 +19,7 @@ public class PlaylistRecommender {
         int sum = 0;
         // summing bpms
         for (int i = 0; i < bpms.size(); i++) {
-            sum += i;
+            sum += bpms.get(i);
         }
         // calculating average
         int average = sum / bpms.size();

@@ -1,6 +1,7 @@
 package edu.pitt.se;
 
 import org.junit.jupiter.api.Test;
+import java.util.List;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,8 +15,19 @@ public class PlaylistRecommenderTest {
 
     @Test
     public void testClassifyEnergy() {
-        // List<integer> empty = new ArrayList<>();
-        // assertEquals("Invalid Size, List must contain at least one item", PlaylistRecommender.classifyEnergy(bpms));
+        List<Integer> bpms = new ArrayList<Integer>();
+        assertEquals("Invalid Size, List must contain at least one item", PlaylistRecommender.classifyEnergy(bpms));
+        bpms = null;
+        assertEquals("Invalid, List is null", PlaylistRecommender.classifyEnergy(bpms));
+
+        List<Integer> bpms2 = new ArrayList<Integer>();
+        bpms2.add(20);
+        assertEquals("LOW", PlaylistRecommender.classifyEnergy(bpms2));
+        bpms2.add(240)
+        assertEquals("MEDIUM", PlaylistRecommender.classifyEnergy(bpms2));
+        bpms2.add(40);
+        assertEquals("HIGH", PlaylistRecommender.classifyEnergy(bpms2));
+
 
 
     }
@@ -26,6 +38,7 @@ public class PlaylistRecommenderTest {
         assertTrue(PlaylistRecommender.isValidTrackTitle("Playlist Test One"));
         assertFalse(PlaylistRecommender.isValidTrackTitle("!-#$"));
         assertFalse(PlaylistRecommender.isValidTrackTitle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij"));
+        assertFalse(PlaylistRecommender.isValidTrackTitle("This is my new playlist!"));
 
     }
 
