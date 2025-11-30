@@ -1,6 +1,7 @@
 package edu.pitt.se;
 
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaylistRecommenderTest {
@@ -12,18 +13,26 @@ public class PlaylistRecommenderTest {
     // assertThrows(Exception.class, () -> { ... })
 
     @Test
-    public String testClassifyEnergy() {
-        assertEquals("Invalid Size, List must contain at least one item", PlaylistRecommender.classifyEnergy(null));
+    public void testClassifyEnergy() {
+        // List<integer> empty = new ArrayList<>();
+        // assertEquals("Invalid Size, List must contain at least one item", PlaylistRecommender.classifyEnergy(bpms));
+
 
     }
 
     @Test 
-    public boolean testValidTrackTitle() {
-        assertTrue(true);
+    public void testValidTrackTitle() {
+        assertFalse(PlaylistRecommender.isValidTrackTitle("Abc123"));
+        assertTrue(PlaylistRecommender.isValidTrackTitle("Playlist Test One"));
+        assertFalse(PlaylistRecommender.isValidTrackTitle("!-#$"));
+        assertFalse(PlaylistRecommender.isValidTrackTitle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij"));
+
     }
 
     @Test 
-    public int testNormalizeVolume() {
-        assertEquals(True);
+    public void testNormalizeVolume() {
+        assertEquals(100, PlaylistRecommender.normalizeVolume(120));
+        assertEquals(0, PlaylistRecommender.normalizeVolume(-30));
+        assertEquals(75, PlaylistRecommender.normalizeVolume(75));
     }
 }

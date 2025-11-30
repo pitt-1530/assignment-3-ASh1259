@@ -50,7 +50,7 @@ public class PlaylistRecommender {
 
             char curr = title.charAt(i);
 
-            if (!Character.isLetter(curr) || curr != ' ') {
+            if (!Character.isLetter(curr) && curr != ' ') {
                 return false;
             }
         }
