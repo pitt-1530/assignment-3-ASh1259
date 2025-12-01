@@ -31,10 +31,10 @@ public class PlaylistRecommender {
         } else if (average >= 100 && average <= 139) {
             return "MEDIUM";
 
-        } else {
+        } else if(average < 100){
             return "LOW";
-
         }
+        return "LOW";
     }
 
     public static boolean isValidTrackTitle(String title) {
