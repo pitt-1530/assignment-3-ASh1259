@@ -8,12 +8,12 @@ public class PlaylistRecommender {
 
         // if the list is null invalid
         if (bpms == null) {
-            return "Invalid, List is null";
+            throw new IllegalArgumentException("Invalid, List is null");
         }
 
-        // if nothing is contained within the list
+        // if nothing is contained within the list, invalid
         if (bpms.size() == 0) {
-            return "Invalid Size, List must contain at least one item";
+            throw new IllegalArgumentException("Invalid Size, List must contain at least one item");
         }
 
         int sum = 0;
@@ -38,10 +38,13 @@ public class PlaylistRecommender {
     }
 
     public static boolean isValidTrackTitle(String title) {
-        // if the title is null, less than 1 char, or greater than 30 chars in length
-        // it is an invalid title
-        if (title == null || title.length() < 1 || title.length() > 30) {
-            return false;
+        // if the title is null, invalid
+        if (title == null) {
+            throw new IllegalArgumentException("Invalid, title cannot be null");
+        }
+        // if the title is less than 1 char, or greater than 30 chars in length, invalid
+        if (title.length() < 1 || title.length() > 30) {
+            throw new IllegalArgumentException("Invalid Size, title must contain between 1-30 characters");
         }
 
         // for each character in the string if it is not a letter or a space,
@@ -49,7 +52,6 @@ public class PlaylistRecommender {
         for (int i = 0; i < title.length(); i++) {
 
             char curr = title.charAt(i);
-
             if (!Character.isLetter(curr) && curr != ' ') {
                 return false;
             }
